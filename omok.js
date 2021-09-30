@@ -1,5 +1,5 @@
 /**
- * 세로로 오목이 완성됐는지 확인
+ * (|) 세로로 오목이 완성됐는지 확인
  * @param {*} board 오목판, 10x10
  * @param {*} last 마지막에 둔 곳, [y, x]
  * @param {*} color 색깔: B, W
@@ -15,7 +15,7 @@ function isOmokVertical(board, last, color) {
   console.log({ up });
   while (isSameColor(board, up, color)) {
     count++;
-    up[0]--; // [0]: y
+    up[0]--; // [0]: y // up
     console.log({ up });
   }
 
@@ -24,7 +24,7 @@ function isOmokVertical(board, last, color) {
   console.log({ down });
   while (isSameColor(board, down, color)) {
     count++;
-    down[0]++; // [0]: y
+    down[0]++; // [0]: y // down
     console.log({ down });
   }
 
@@ -34,7 +34,7 @@ function isOmokVertical(board, last, color) {
 }
 
 /**
- * 가로로 오목이 완성됐는지 확인
+ * (-) 가로로 오목이 완성됐는지 확인
  * @param {*} board 오목판, 10x10
  * @param {*} last 마지막에 둔 곳, [y, x]
  * @param {*} color 색깔: B, W
@@ -50,7 +50,7 @@ function isOmokHorizontal(board, last, color) {
   console.log({ left });
   while (isSameColor(board, left, color)) {
     count++;
-    left[1]--; // [1]: x
+    left[1]--; // [1]: x // left
     console.log({ left });
   }
 
@@ -59,7 +59,7 @@ function isOmokHorizontal(board, last, color) {
   console.log({ right });
   while (isSameColor(board, right, color)) {
     count++;
-    right[1]++; // [1]: x
+    right[1]++; // [1]: x // right
     console.log({ right });
   }
 
