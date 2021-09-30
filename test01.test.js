@@ -2,6 +2,13 @@
  * 오목 됐는지 검증 로직 짜보기
  */
 
+describe('test01.test.js', () => {
+  it('test01()', () => {
+    const isOmok = test01();
+    expect(isOmok).toBe(true);
+  });
+});
+
 /**
  * 오목판, 10x10
  */
@@ -47,8 +54,8 @@ function test01() {
   const color = 'W';
   const isOmok = isOmokVertical(board, last, color);
   console.log({ isOmok });
+  return isOmok;
 }
-test01();
 
 /**
  * 세로로 오목이 완성됐는지 확인
