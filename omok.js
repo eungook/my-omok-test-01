@@ -15,7 +15,7 @@ function isOmokVertical(board, last, color) {
   console.log({ up });
   while (isSameColor(board, up, color)) {
     count++;
-    up[0]--;
+    up[0]--; // [0]: y
     console.log({ up });
   }
 
@@ -24,7 +24,7 @@ function isOmokVertical(board, last, color) {
   console.log({ down });
   while (isSameColor(board, down, color)) {
     count++;
-    down[0]++;
+    down[0]++; // [0]: y
     console.log({ down });
   }
 
