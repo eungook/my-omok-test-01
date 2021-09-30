@@ -1,4 +1,20 @@
 /**
+ * 오목이 완성되었는지 확인
+ * @param {*} board 오목판, 10x10
+ * @param {*} last 마지막에 둔 곳, [y, x]
+ * @param {*} color 색깔: B, W
+ * @returns {Boolean} 완성 여부
+ */
+function isOmok(board, last, color) {
+  return (
+    isOmokVertical(board, last, color) ||
+    isOmokHorizontal(board, last, color) ||
+    isOmokSlash(board, last, color) ||
+    isOmokBackslash(board, last, color)
+  );
+}
+
+/**
  * (|) 세로로 오목이 완성됐는지 확인
  * @param {*} board 오목판, 10x10
  * @param {*} last 마지막에 둔 곳, [y, x]
@@ -175,6 +191,7 @@ function isValidYX(yx) {
 }
 
 export {
+  isOmok,
   isOmokVertical,
   isOmokHorizontal,
   isOmokSlash,
