@@ -34,6 +34,41 @@ function isOmokVertical(board, last, color) {
 }
 
 /**
+ * 가로로 오목이 완성됐는지 확인
+ * @param {*} board 오목판, 10x10
+ * @param {*} last 마지막에 둔 곳, [y, x]
+ * @param {*} color 색깔: B, W
+ * @returns {Boolean} 완성 여부
+ */
+function isOmokHorizontal(board, last, color) {
+  const [y, x] = last;
+  let count = 1; // last에서부터 시작
+  console.log({ last });
+
+  // left
+  const left = [y, x - 1];
+  console.log({ left });
+  while (isSameColor(board, left, color)) {
+    count++;
+    left[1]--; // [1]: x
+    console.log({ left });
+  }
+
+  // right
+  const right = [y, x + 1];
+  console.log({ right });
+  while (isSameColor(board, right, color)) {
+    count++;
+    right[1]++; // [1]: x
+    console.log({ right });
+  }
+
+  const isOmok = count >= 5;
+  console.log({ count });
+  return isOmok;
+}
+
+/**
  * 같은 색깔인지 확인
  * @param {*} board 오목판, 10x10
  * @param {*} yx 위치, [y, x]
@@ -65,4 +100,4 @@ function isValidYX(yx) {
   return true;
 }
 
-export { isOmokVertical, isSameColor, isValidYX };
+export { isOmokVertical, isOmokHorizontal, isSameColor, isValidYX };
