@@ -69,6 +69,80 @@ function isOmokHorizontal(board, last, color) {
 }
 
 /**
+ * (/) 우상단에서 좌하단으로 오목이 완성됐는지 확인
+ * @param {*} board 오목판, 10x10
+ * @param {*} last 마지막에 둔 곳, [y, x]
+ * @param {*} color 색깔: B, W
+ * @returns {Boolean} 완성 여부
+ */
+function isOmokSlash(board, last, color) {
+  const [y, x] = last;
+  let count = 1; // last에서부터 시작
+  console.log({ last });
+
+  // upRight
+  const upRight = [y - 1, x + 1];
+  console.log({ upRight });
+  while (isSameColor(board, upRight, color)) {
+    count++;
+    upRight[0]--; // [0]: y // up
+    upRight[1]++; // [1]: x // right
+    console.log({ upRight });
+  }
+
+  // downLeft
+  const downLeft = [y + 1, x - 1];
+  console.log({ downLeft });
+  while (isSameColor(board, downLeft, color)) {
+    count++;
+    downLeft[0]++; // [0]: y // down
+    downLeft[1]--; // [1]: x // left
+    console.log({ downLeft });
+  }
+
+  const isOmok = count >= 5;
+  console.log({ count });
+  return isOmok;
+}
+
+/**
+ * (\\) 좌상단에서 우하단으로 오목이 완성됐는지 확인
+ * @param {*} board 오목판, 10x10
+ * @param {*} last 마지막에 둔 곳, [y, x]
+ * @param {*} color 색깔: B, W
+ * @returns {Boolean} 완성 여부
+ */
+function isOmokBackslash(board, last, color) {
+  const [y, x] = last;
+  let count = 1; // last에서부터 시작
+  console.log({ last });
+
+  // upLeft
+  const upLeft = [y - 1, x - 1];
+  console.log({ upLeft });
+  while (isSameColor(board, upLeft, color)) {
+    count++;
+    upLeft[0]--; // [0]: y // up
+    upLeft[1]--; // [1]: x // left
+    console.log({ upLeft });
+  }
+
+  // downRight
+  const downRight = [y + 1, x + 1];
+  console.log({ downRight });
+  while (isSameColor(board, downRight, color)) {
+    count++;
+    downRight[0]++; // [0]: y // down
+    downRight[1]++; // [1]: x // right
+    console.log({ downRight });
+  }
+
+  const isOmok = count >= 5;
+  console.log({ count });
+  return isOmok;
+}
+
+/**
  * 같은 색깔인지 확인
  * @param {*} board 오목판, 10x10
  * @param {*} yx 위치, [y, x]
@@ -100,4 +174,11 @@ function isValidYX(yx) {
   return true;
 }
 
-export { isOmokVertical, isOmokHorizontal, isSameColor, isValidYX };
+export {
+  isOmokVertical,
+  isOmokHorizontal,
+  isOmokSlash,
+  isOmokBackslash,
+  isSameColor,
+  isValidYX,
+};
